@@ -13,78 +13,34 @@ turnFunc=()=>{
     return initial==='X'?initial='O':initial='X';
 }
 gameWon=()=>{
-    if((items[0].children[0].innerText===items[0].children[1].innerText) && (items[0].children[0].innerText===items[0].children[2].innerText) && (items[0].children[0].innerText!='')){
+    let won=[
+     [0,1,2],
+     [3,4,5],
+     [6,7,8],
+     [0,4,8],
+     [0,3,6],
+     [1,4,7],
+     [2,5,8],
+     [2,4,6]
+    ];
+    won.forEach((e)=>{
+    if((blocks[e[0]].innerText===blocks[e[1]].innerText) && (blocks[e[0]].innerText===blocks[e[2]].innerText) && (blocks[e[0]].innerText !=='')){
         gif.style.width='150px';
         congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
         success.play();
-        items[0].children[0].style.backgroundColor='green';
-        items[0].children[1].style.backgroundColor='green';
-        items[0].children[2].style.backgroundColor='green';
+        blocks[e[0]].style.backgroundColor='green';
+        blocks[e[1]].style.backgroundColor='green';
+        blocks[e[2]].style.backgroundColor='green';
     }
-    else if((items[1].children[0].innerText===items[1].children[1].innerText) && (items[1].children[0].innerText===items[1].children[2].innerText) && (items[1].children[0].innerText!='')){
-        gif.style.width='150px';
-        congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
-        success.play();
-        items[1].children[0].style.backgroundColor='green';
-        items[1].children[1].style.backgroundColor='green';
-        items[1].children[2].style.backgroundColor='green';
-    }
-    else if((items[2].children[0].innerText===items[2].children[1].innerText) && (items[2].children[0].innerText===items[2].children[2].innerText) && (items[2].children[0].innerText!='')){
-        gif.style.width='150px';
-        congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
-        success.play();
-        items[2].children[0].style.backgroundColor='green';
-        items[2].children[1].style.backgroundColor='green';
-        items[2].children[2].style.backgroundColor='green';
-    }
-    else if((items[0].children[0].innerText===items[1].children[0].innerText) && (items[0].children[0].innerText===items[2].children[0].innerText) && (items[0].children[0].innerText!='')){
-        gif.style.width='150px';
-        congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
-        success.play();
-        items[0].children[0].style.backgroundColor='green';
-        items[1].children[0].style.backgroundColor='green';
-        items[2].children[0].style.backgroundColor='green';
-    }
-    else if((items[0].children[2].innerText===items[1].children[2].innerText) && (items[0].children[2].innerText===items[2].children[2].innerText) && (items[0].children[2].innerText!='')){
-        gif.style.width='150px';
-        congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
-        success.play();
-        items[0].children[2].style.backgroundColor='green';
-        items[1].children[2].style.backgroundColor='green';
-        items[2].children[2].style.backgroundColor='green';
-    }
-    else if((items[0].children[1].innerText===items[1].children[1].innerText) && (items[1].children[1].innerText===items[2].children[1].innerText) && (items[0].children[1].innerText!='')){
-        gif.style.width='150px';
-        congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
-        success.play();
-        items[0].children[1].style.backgroundColor='green';
-        items[1].children[1].style.backgroundColor='green';
-        items[2].children[1].style.backgroundColor='green';
-    }
-    else if((items[0].children[2].innerText===items[1].children[1].innerText) && (items[2].children[0].innerText===items[0].children[2].innerText) && (items[0].children[1].innerText!='')){
-        gif.style.width='150px';
-        congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
-        success.play();
-        items[0].children[2].style.backgroundColor='green';
-        items[1].children[1].style.backgroundColor='green';
-        items[0].children[1].style.backgroundColor='green';
-    }
-    else if((items[0].children[0].innerText===items[1].children[1].innerText) && (items[0].children[0].innerText===items[2].children[2].innerText) && (items[0].children[0].innerText!='')){
-        gif.style.width='150px';
-        congo.innerText=`Congrajulations ! ${initial==='O'?'X':'O'} won`;
-        success.play();
-        items[0].children[0].style.backgroundColor='green';
-        items[1].children[1].style.backgroundColor='green';
-        items[2].children[2].style.backgroundColor='green';
-    }
-
+    });
+    
 }
 Array.from(blocks).forEach((element)=>{
 element.addEventListener('click',()=>{
-let renderText=initial;    
-document.getElementById('turn').innerText=`${renderText} Turn`;
-element.innerText=renderText;
-renderText=turnFunc();  
+    let renderText=initial;    
+    element.innerText=renderText;
+    renderText=turnFunc();  
+    document.getElementById('turn').innerText=`${renderText} Turn`;
 gameWon();  
 });
 });
