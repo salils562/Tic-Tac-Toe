@@ -1,0 +1,74 @@
+.gridlayout{
+    display: flex;
+    flex-direction: row;
+}
+
+.blocks{
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 3rem;
+}
+#reset{
+    width: 100px;
+    height: 30px;
+    background-color: aqua;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    font-weight: bold;
+}
+img{
+    border-radius: 9px;
+    margin-top: 50px;
+    width: 150px;
+    transition: width 0.4s ease-out;
+}
+#congrajulate{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.blocks:hover{
+    background-color: rgb(182, 126, 53);
+}
+#item-1,#item-2,#item-3{
+    border-left: none;
+}
+#item-7,#item-8,#item-9{
+    border-right: none;
+}
+#item-4{
+border-top: none;
+}
+#item-6{
+    border-bottom: none;
+}
+#item-1{
+    border-top: none;
+}
+#item-3{
+    border-bottom: none;
+}
+#item-7{
+border-top: none;
+}
+#item-9{
+    border-bottom: none;
+}
+.cont{
+    display: flex;
+}
+@media only screen and (max-width:500px){
+    .elem{
+        margin-top: 30px;
+        text-align: center;
+        align-items: center;
+    }
+    button{
+        margin-bottom: -30px;
+    }
+    .cont{
+        flex-wrap: wrap;
+    }
+}
